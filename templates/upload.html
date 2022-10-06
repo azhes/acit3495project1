@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <title>Python Flask - Video Upload and Play Example</title>
-<h2>Select a video to upload and play</h2>
+<h1>Select a video to upload & play!</h1>
 <p>
 	{% with messages = get_flashed_messages() %}
 	  {% if messages %}
