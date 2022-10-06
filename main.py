@@ -4,6 +4,7 @@ import urllib.request
 from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 from upload import upload_video_file
+from write_to_mysql import write_to_mysql
 
 @app.route('/')
 def upload_form():
@@ -23,6 +24,7 @@ def upload_video():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         print(f'Filename: {filename}')
         flash('Video successfully uploaded and displayed below')
+        write_to_mysql(filename)
         upload_video_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         return render_template('upload.html', filename=filename)
 
